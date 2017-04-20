@@ -14,6 +14,7 @@ class TaskController extends Controller {
      * @return void
      */
     public function __construct() {
+
        $this->middleware('auth');
     }
 
@@ -36,6 +37,8 @@ class TaskController extends Controller {
      * @return Response
      */
     public function store(Request $request) {
+        
+        //バリデーション定義
         $this->validate($request, [
             'name' => 'required|max:255',
         ]);

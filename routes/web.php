@@ -21,6 +21,29 @@ Route::get('/', function () {
 
 
 
+Route::get('/tasks', 'TaskController@index');
+Route::post('/task', 'TaskController@store');
+Route::delete('/task/{task}', 'TaskController@destroy');
+
+
+// 認証ルート…
+Route::get('auth/login', 'Auth\LoginController@getLogin');
+Route::post('auth/login', 'Auth\LoginController@postLogin');
+Route::get('auth/logout', 'Auth\LoginController@getLogout');
+
+// 登録ルート…
+Route::get('auth/register', 'Auth\RegisterController@getRegister');
+Route::post('auth/register', 'Auth\RegisterController@postRegister');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+
+
+
+
 
 
 /**
@@ -67,23 +90,3 @@ Route::get('/', function () {
 //    return redirect('/');
 //});
 //
-
-
-Route::get('/tasks', 'TaskController@index');
-Route::post('/task', 'TaskController@store');
-Route::delete('/task/{task}', 'TaskController@destroy');
-
-
-// 認証ルート…
-Route::get('auth/login', 'Auth\LoginController@getLogin');
-Route::post('auth/login', 'Auth\LoginController@postLogin');
-Route::get('auth/logout', 'Auth\LoginController@getLogout');
-
-//// 登録ルート…
-//Route::get('auth/register', 'Auth\AuthController@getRegister');
-//Route::post('auth/register', 'Auth\AuthController@postRegister');
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');

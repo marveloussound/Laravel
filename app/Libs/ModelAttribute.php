@@ -1,28 +1,8 @@
 <?php
 
-namespace App\Http\ViewModel\Auth;
+namespace App\Libs;
 
 /* @var $variable ClassName */
-
-class LoginModel {
-
-    private static $instance;
-    public $Name;
-
-    protected function __construct() {
-
-        $this->Name = new ModelAttribute('required|max:255');
-    }
-
-    public static function getInstance() {
-
-        if (self::$instance == null) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
-
-}
 
 /* @var  ModelAttribute */
 
@@ -45,8 +25,8 @@ class ModelAttribute {
         $attributes = explode('|', $Raw);
 
         foreach ($attributes as $attribute) {
-
-            if (strpos($attribute, 'max') !== false) {
+          
+            if (preg_match('/max|min/', $attribute) !== false) {
                 $this->StringLength = new StringLength();
                 $this->StringLength->Set(0, 20);
             }

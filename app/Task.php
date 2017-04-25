@@ -18,20 +18,29 @@ use App\User;
  * @method static \Illuminate\Database\Query\Builder|\App\Task whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class Task extends Model
-{
-     /**
+class Task extends Model {
+
+    /**
      * 複数代入する属性
      *
      * @var array
      */
     protected $fillable = ['name'];
-    
-     /**
+
+    /**
+     * アプリケーションにマップするポリシー
+     *
+     * @var array
+     */
+    protected $policies = [
+        Task::class => TaskPolicy::class,
+    ];
+
+    /**
      * タスク所有ユーザーの取得
      */
-    public function user(){
+    public function user() {
         return $this->belongsTo(User::class);
     }
-    
+
 }

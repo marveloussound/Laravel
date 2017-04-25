@@ -1,43 +1,67 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Auth {
 
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Http\ViewModel\Auth;
-class LoginController extends Controller {
-    /*
-      |--------------------------------------------------------------------------
-      | Login Controller
-      |--------------------------------------------------------------------------
-      |
-      | This controller handles authenticating users for the application and
-      | redirecting them to your home screen. The controller uses a trait
-      | to conveniently provide its functionality to your applications.
-      |
-     */
 
-use AuthenticatesUsers;
+    use App\Http\Controllers\Controller;
+    use Illuminate\Foundation\Auth\AuthenticatesUsers;
+    use \App\Http\ViewModel as ViewModel;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+    class LoginController extends Controller {
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct() {
+        //public  $ViewModel = new App\Http\ViewModel\Auth\LoginModel;
 
-        LoginModel::getInstance();
+        /*
+          |--------------------------------------------------------------------------
+          | Login Controller
+          |--------------------------------------------------------------------------
+          |
+          | This controller handles authenticating users for the application and
+          | redirecting them to your home screen. The controller uses a trait
+          | to conveniently provide its functionality to your applications.
+          |
+         */
 
-        $a = LoginModel::getInstance();
+        use AuthenticatesUsers;
 
-        $this->middleware('guest', ['except' => 'logout']);
+        /**
+         * Where to redirect users after login.
+         *
+         * @var string
+         */
+        protected $redirectTo = '/home';
+
+        /**
+         * Create a new controller instance.
+         *
+         * @return void
+         */
+        public function __construct() {
+
+            //   LoginModel::getInstance();
+//            $loginModel = ViewModel\Auth\LoginModel::getInstance();
+//            $a = $loginModel->Name;
+            phpinfo();
+            $this->test("aa", "a");
+
+            $this->middleware('guest', ['except' => 'logout']);
+        }
+
+        /**
+         * Show the application dashboard.
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function getLogin() {
+
+            return view('home');
+        }
+
+        public function test($aaa, $bbb) {
+
+            return true;
+        }
+
     }
 
 }

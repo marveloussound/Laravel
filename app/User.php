@@ -25,14 +25,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Query\Builder|\App\User whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class User extends Model implements AuthenticatableContract,
-                                    AuthorizableContract,
-                                    CanResetPasswordContract
+class User extends Authenticatable
 {
-    
-    
-    use Authenticatable, Authorizable, CanResetPassword;
-
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.

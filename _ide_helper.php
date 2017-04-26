@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.18 on 2017-04-13.
+ * Generated for Laravel 5.4.11 on 2017-02-14.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -101,61 +101,56 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the path to the application "app" directory.
          *
-         * @param string $path Optionally, a path to append to the app path
          * @return string 
          * @static 
          */
-        public static function path($path = '')
+        public static function path()
         {
-            return \Illuminate\Foundation\Application::path($path);
+            return \Illuminate\Foundation\Application::path();
         }
         
         /**
          * Get the base path of the Laravel installation.
          *
-         * @param string $path Optionally, a path to append to the base path
          * @return string 
          * @static 
          */
-        public static function basePath($path = '')
+        public static function basePath()
         {
-            return \Illuminate\Foundation\Application::basePath($path);
+            return \Illuminate\Foundation\Application::basePath();
         }
         
         /**
          * Get the path to the bootstrap directory.
          *
-         * @param string $path Optionally, a path to append to the bootstrap path
          * @return string 
          * @static 
          */
-        public static function bootstrapPath($path = '')
+        public static function bootstrapPath()
         {
-            return \Illuminate\Foundation\Application::bootstrapPath($path);
+            return \Illuminate\Foundation\Application::bootstrapPath();
         }
         
         /**
          * Get the path to the application configuration files.
          *
-         * @param string $path Optionally, a path to append to the config path
          * @return string 
          * @static 
          */
-        public static function configPath($path = '')
+        public static function configPath()
         {
-            return \Illuminate\Foundation\Application::configPath($path);
+            return \Illuminate\Foundation\Application::configPath();
         }
         
         /**
          * Get the path to the database directory.
          *
-         * @param string $path Optionally, a path to append to the database path
          * @return string 
          * @static 
          */
-        public static function databasePath($path = '')
+        public static function databasePath()
         {
-            return \Illuminate\Foundation\Application::databasePath($path);
+            return \Illuminate\Foundation\Application::databasePath();
         }
         
         /**
@@ -218,13 +213,12 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the path to the resources directory.
          *
-         * @param string $path
          * @return string 
          * @static 
          */
-        public static function resourcePath($path = '')
+        public static function resourcePath()
         {
-            return \Illuminate\Foundation\Application::resourcePath($path);
+            return \Illuminate\Foundation\Application::resourcePath();
         }
         
         /**
@@ -1091,20 +1085,6 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Resolve the given type with the given parameter overrides.
-         *
-         * @param string $abstract
-         * @param array $parameters
-         * @return mixed 
-         * @static 
-         */
-        public static function makeWith($abstract, $parameters)
-        {
-            //Method inherited from \Illuminate\Container\Container            
-            return \Illuminate\Foundation\Application::makeWith($abstract, $parameters);
-        }
-        
-        /**
          * Instantiate a concrete instance of the given type.
          *
          * @param string $concrete
@@ -1884,6 +1864,18 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if the current user is authenticated.
          *
+         * @return \App\User 
+         * @throws \Illuminate\Auth\AuthenticationException
+         * @static 
+         */
+        public static function authenticate()
+        {
+            return \Illuminate\Auth\SessionGuard::authenticate();
+        }
+        
+        /**
+         * Determine if the current user is authenticated.
+         *
          * @return bool 
          * @static 
          */
@@ -1901,18 +1893,6 @@ namespace Illuminate\Support\Facades {
         public static function guest()
         {
             return \Illuminate\Auth\SessionGuard::guest();
-        }
-        
-        /**
-         * Determine if the current user is authenticated.
-         *
-         * @return \App\User 
-         * @throws \Illuminate\Auth\AuthenticationException
-         * @static 
-         */
-        public static function authenticate()
-        {
-            return \Illuminate\Auth\SessionGuard::authenticate();
         }
         
     }         
@@ -3606,11 +3586,11 @@ namespace Illuminate\Support\Facades {
         /**
          * Get an option from the configuration options.
          *
-         * @param string|null $option
+         * @param string $option
          * @return mixed 
          * @static 
          */
-        public static function getConfig($option = null)
+        public static function getConfig($option)
         {
             //Method inherited from \Illuminate\Database\Connection            
             return \Illuminate\Database\MySqlConnection::getConfig($option);
@@ -9294,7 +9274,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Checks if a key is present and not null.
+         * Checks if an a key is present and not null.
          *
          * @param string|array $key
          * @return bool 
@@ -9812,19 +9792,6 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Set the given disk instance.
-         *
-         * @param string $name
-         * @param mixed $disk
-         * @return void 
-         * @static 
-         */
-        public static function set($name, $disk)
-        {
-            \Illuminate\Filesystem\FilesystemManager::set($name, $disk);
-        }
-        
-        /**
          * Get the default driver name.
          *
          * @return string 
@@ -9857,30 +9824,6 @@ namespace Illuminate\Support\Facades {
         public static function extend($driver, $callback)
         {
             return \Illuminate\Filesystem\FilesystemManager::extend($driver, $callback);
-        }
-        
-        /**
-         * Assert that the given file exists.
-         *
-         * @param string $path
-         * @return void 
-         * @static 
-         */
-        public static function assertExists($path)
-        {
-            \Illuminate\Filesystem\FilesystemAdapter::assertExists($path);
-        }
-        
-        /**
-         * Assert that the given file does not exist.
-         *
-         * @param string $path
-         * @return void 
-         * @static 
-         */
-        public static function assertMissing($path)
-        {
-            \Illuminate\Filesystem\FilesystemAdapter::assertMissing($path);
         }
         
         /**
@@ -10590,20 +10533,6 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Register a custom implicit validator extension.
-         *
-         * @param string $rule
-         * @param \Closure|string $extension
-         * @param string $message
-         * @return void 
-         * @static 
-         */
-        public static function extendDependent($rule, $extension, $message = null)
-        {
-            \Illuminate\Validation\Factory::extendDependent($rule, $extension, $message);
-        }
-        
-        /**
          * Register a custom implicit validator message replacer.
          *
          * @param string $rule
@@ -10692,21 +10621,6 @@ namespace Illuminate\Support\Facades {
         public static function make($view, $data = array(), $mergeData = array())
         {
             return \Illuminate\View\Factory::make($view, $data, $mergeData);
-        }
-        
-        /**
-         * Get the rendered content of the view based on a given condition.
-         *
-         * @param bool $condition
-         * @param string $view
-         * @param array $data
-         * @param array $mergeData
-         * @return string 
-         * @static 
-         */
-        public static function renderWhen($condition, $view, $data = array(), $mergeData = array())
-        {
-            return \Illuminate\View\Factory::renderWhen($condition, $view, $data, $mergeData);
         }
         
         /**
@@ -11009,32 +10923,6 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Register a view composer event.
-         *
-         * @param array|string $views
-         * @param \Closure|string $callback
-         * @return array 
-         * @static 
-         */
-        public static function composer($views, $callback)
-        {
-            return \Illuminate\View\Factory::composer($views, $callback);
-        }
-        
-        /**
-         * Register a view creator event.
-         *
-         * @param array|string $views
-         * @param \Closure|string $callback
-         * @return array 
-         * @static 
-         */
-        public static function creator($views, $callback)
-        {
-            return \Illuminate\View\Factory::creator($views, $callback);
-        }
-        
-        /**
          * Start a component rendering process.
          *
          * @param string $name
@@ -11083,6 +10971,19 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+         * Register a view creator event.
+         *
+         * @param array|string $views
+         * @param \Closure|string $callback
+         * @return array 
+         * @static 
+         */
+        public static function creator($views, $callback)
+        {
+            return \Illuminate\View\Factory::creator($views, $callback);
+        }
+        
+        /**
          * Register multiple view composers via an array.
          *
          * @param array $composers
@@ -11092,6 +10993,19 @@ namespace Illuminate\Support\Facades {
         public static function composers($composers)
         {
             return \Illuminate\View\Factory::composers($composers);
+        }
+        
+        /**
+         * Register a view composer event.
+         *
+         * @param array|string $views
+         * @param \Closure|string $callback
+         * @return array 
+         * @static 
+         */
+        public static function composer($views, $callback)
+        {
+            return \Illuminate\View\Factory::composer($views, $callback);
         }
         
         /**
@@ -11276,7 +11190,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get an instance of the last loop in the stack.
          *
-         * @return \stdClass|null 
+         * @return \StdClass|null 
          * @static 
          */
         public static function getLastLoop()
@@ -11395,72 +11309,10 @@ namespace Illuminate\Support\Facades {
     }         
 }
     
-    
-namespace {
+namespace Illuminate\Database\Eloquent {
 
-    class App extends \Illuminate\Support\Facades\App {}
-    
-    class Artisan extends \Illuminate\Support\Facades\Artisan {}
-    
-    class Auth extends \Illuminate\Support\Facades\Auth {}
-    
-    class Blade extends \Illuminate\Support\Facades\Blade {}
-    
-    class Broadcast extends \Illuminate\Support\Facades\Broadcast {}
-    
-    class Bus extends \Illuminate\Support\Facades\Bus {}
-    
-    class Cache extends \Illuminate\Support\Facades\Cache {}
-    
-    class Config extends \Illuminate\Support\Facades\Config {}
-    
-    class Cookie extends \Illuminate\Support\Facades\Cookie {}
-    
-    class Crypt extends \Illuminate\Support\Facades\Crypt {}
-    
-    class DB extends \Illuminate\Support\Facades\DB {}
-    
-    class Event extends \Illuminate\Support\Facades\Event {}
-    
-    class File extends \Illuminate\Support\Facades\File {}
-    
-    class Gate extends \Illuminate\Support\Facades\Gate {}
-    
-    class Hash extends \Illuminate\Support\Facades\Hash {}
-    
-    class Lang extends \Illuminate\Support\Facades\Lang {}
-    
-    class Log extends \Illuminate\Support\Facades\Log {}
-    
-    class Mail extends \Illuminate\Support\Facades\Mail {}
-    
-    class Notification extends \Illuminate\Support\Facades\Notification {}
-    
-    class Password extends \Illuminate\Support\Facades\Password {}
-    
-    class Queue extends \Illuminate\Support\Facades\Queue {}
-    
-    class Redirect extends \Illuminate\Support\Facades\Redirect {}
-    
-    class Request extends \Illuminate\Support\Facades\Request {}
-    
-    class Response extends \Illuminate\Support\Facades\Response {}
-    
-    class Route extends \Illuminate\Support\Facades\Route {}
-    
-    class Schema extends \Illuminate\Support\Facades\Schema {}
-    
-    class Session extends \Illuminate\Support\Facades\Session {}
-    
-    class Storage extends \Illuminate\Support\Facades\Storage {}
-    
-    class URL extends \Illuminate\Support\Facades\URL {}
-    
-    class Validator extends \Illuminate\Support\Facades\Validator {}
-    
-    class View extends \Illuminate\Support\Facades\View {}
-    
-    class Eloquent extends \Illuminate\Database\Eloquent\Model {    
+    class Model {
+        
         /**
          * Register a new global scope.
          *
@@ -11507,6 +11359,20 @@ namespace {
         public static function removedScopes()
         {
             return \Illuminate\Database\Eloquent\Builder::removedScopes();
+        }
+        
+        /**
+         * Apply the callback's query changes if the given "value" is true.
+         *
+         * @param bool $value
+         * @param \Closure $callback
+         * @param \Closure $default
+         * @return $this 
+         * @static 
+         */
+        public static function when($value, $callback, $default = null)
+        {
+            return \Illuminate\Database\Eloquent\Builder::when($value, $callback, $default);
         }
         
         /**
@@ -11580,7 +11446,7 @@ namespace {
          *
          * @param mixed $id
          * @param array $columns
-         * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static[]|static|null 
+         * @return mixed 
          * @static 
          */
         public static function find($id, $columns = array())
@@ -11665,6 +11531,18 @@ namespace {
         public static function updateOrCreate($attributes, $values = array())
         {
             return \Illuminate\Database\Eloquent\Builder::updateOrCreate($attributes, $values);
+        }
+        
+        /**
+         * Execute the query and get the first result.
+         *
+         * @param array $columns
+         * @return \Illuminate\Database\Eloquent\Model|static|null 
+         * @static 
+         */
+        public static function first($columns = array())
+        {
+            return \Illuminate\Database\Eloquent\Builder::first($columns);
         }
         
         /**
@@ -11753,6 +11631,19 @@ namespace {
         }
         
         /**
+         * Chunk the results of the query.
+         *
+         * @param int $count
+         * @param callable $callback
+         * @return bool 
+         * @static 
+         */
+        public static function chunk($count, $callback)
+        {
+            return \Illuminate\Database\Eloquent\Builder::chunk($count, $callback);
+        }
+        
+        /**
          * Chunk the results of a query by comparing numeric IDs.
          *
          * @param int $count
@@ -11765,6 +11656,19 @@ namespace {
         public static function chunkById($count, $callback, $column = null, $alias = null)
         {
             return \Illuminate\Database\Eloquent\Builder::chunkById($count, $callback, $column, $alias);
+        }
+        
+        /**
+         * Execute a callback over each item while chunking.
+         *
+         * @param callable $callback
+         * @param int $count
+         * @return bool 
+         * @static 
+         */
+        public static function each($callback, $count = 1000)
+        {
+            return \Illuminate\Database\Eloquent\Builder::each($callback, $count);
         }
         
         /**
@@ -11975,58 +11879,6 @@ namespace {
         }
         
         /**
-         * Chunk the results of the query.
-         *
-         * @param int $count
-         * @param callable $callback
-         * @return bool 
-         * @static 
-         */
-        public static function chunk($count, $callback)
-        {
-            return \Illuminate\Database\Eloquent\Builder::chunk($count, $callback);
-        }
-        
-        /**
-         * Execute a callback over each item while chunking.
-         *
-         * @param callable $callback
-         * @param int $count
-         * @return bool 
-         * @static 
-         */
-        public static function each($callback, $count = 1000)
-        {
-            return \Illuminate\Database\Eloquent\Builder::each($callback, $count);
-        }
-        
-        /**
-         * Execute the query and get the first result.
-         *
-         * @param array $columns
-         * @return mixed 
-         * @static 
-         */
-        public static function first($columns = array())
-        {
-            return \Illuminate\Database\Eloquent\Builder::first($columns);
-        }
-        
-        /**
-         * Apply the callback's query changes if the given "value" is true.
-         *
-         * @param mixed $value
-         * @param \Closure $callback
-         * @param \Closure $default
-         * @return mixed 
-         * @static 
-         */
-        public static function when($value, $callback, $default = null)
-        {
-            return \Illuminate\Database\Eloquent\Builder::when($value, $callback, $default);
-        }
-        
-        /**
          * Add a relationship count / exists condition to the query.
          *
          * @param string $relation
@@ -12095,7 +11947,7 @@ namespace {
          * @return \Illuminate\Database\Eloquent\Builder|static 
          * @static 
          */
-        public static function orWhereHas($relation, $callback = null, $operator = '>=', $count = 1)
+        public static function orWhereHas($relation, $callback, $operator = '>=', $count = 1)
         {
             return \Illuminate\Database\Eloquent\Builder::orWhereHas($relation, $callback, $operator, $count);
         }
@@ -12317,18 +12169,6 @@ namespace {
         public static function crossJoin($table, $first = null, $operator = null, $second = null)
         {
             return \Illuminate\Database\Query\Builder::crossJoin($table, $first, $operator, $second);
-        }
-        
-        /**
-         * Pass the query to a given callback.
-         *
-         * @param \Closure $callback
-         * @return \Illuminate\Database\Query\Builder 
-         * @static 
-         */
-        public static function tap($callback)
-        {
-            return \Illuminate\Database\Query\Builder::tap($callback);
         }
         
         /**
@@ -12859,18 +12699,6 @@ namespace {
         public static function orderBy($column, $direction = 'asc')
         {
             return \Illuminate\Database\Query\Builder::orderBy($column, $direction);
-        }
-        
-        /**
-         * Add a descending "order by" clause to the query.
-         *
-         * @param string $column
-         * @return $this 
-         * @static 
-         */
-        public static function orderByDesc($column)
-        {
-            return \Illuminate\Database\Query\Builder::orderByDesc($column);
         }
         
         /**
@@ -13419,7 +13247,76 @@ namespace {
         {
             return \Illuminate\Database\Query\Builder::macroCall($method, $parameters);
         }
-        }
+        
+    }         
+}
+    
+    
+namespace {
+
+    class App extends \Illuminate\Support\Facades\App {}
+    
+    class Artisan extends \Illuminate\Support\Facades\Artisan {}
+    
+    class Auth extends \Illuminate\Support\Facades\Auth {}
+    
+    class Blade extends \Illuminate\Support\Facades\Blade {}
+    
+    class Broadcast extends \Illuminate\Support\Facades\Broadcast {}
+    
+    class Bus extends \Illuminate\Support\Facades\Bus {}
+    
+    class Cache extends \Illuminate\Support\Facades\Cache {}
+    
+    class Config extends \Illuminate\Support\Facades\Config {}
+    
+    class Cookie extends \Illuminate\Support\Facades\Cookie {}
+    
+    class Crypt extends \Illuminate\Support\Facades\Crypt {}
+    
+    class DB extends \Illuminate\Support\Facades\DB {}
+    
+    class Event extends \Illuminate\Support\Facades\Event {}
+    
+    class File extends \Illuminate\Support\Facades\File {}
+    
+    class Gate extends \Illuminate\Support\Facades\Gate {}
+    
+    class Hash extends \Illuminate\Support\Facades\Hash {}
+    
+    class Lang extends \Illuminate\Support\Facades\Lang {}
+    
+    class Log extends \Illuminate\Support\Facades\Log {}
+    
+    class Mail extends \Illuminate\Support\Facades\Mail {}
+    
+    class Notification extends \Illuminate\Support\Facades\Notification {}
+    
+    class Password extends \Illuminate\Support\Facades\Password {}
+    
+    class Queue extends \Illuminate\Support\Facades\Queue {}
+    
+    class Redirect extends \Illuminate\Support\Facades\Redirect {}
+    
+    class Request extends \Illuminate\Support\Facades\Request {}
+    
+    class Response extends \Illuminate\Support\Facades\Response {}
+    
+    class Route extends \Illuminate\Support\Facades\Route {}
+    
+    class Schema extends \Illuminate\Support\Facades\Schema {}
+    
+    class Session extends \Illuminate\Support\Facades\Session {}
+    
+    class Storage extends \Illuminate\Support\Facades\Storage {}
+    
+    class URL extends \Illuminate\Support\Facades\URL {}
+    
+    class Validator extends \Illuminate\Support\Facades\Validator {}
+    
+    class View extends \Illuminate\Support\Facades\View {}
+    
+    class Eloquent extends \Illuminate\Database\Eloquent\Model {}
     
 }
 

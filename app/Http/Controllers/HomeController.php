@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Model\Task;
 class HomeController extends Controller {
 
     /**
@@ -12,7 +12,7 @@ class HomeController extends Controller {
      * @return void
      */
     public function __construct() {
-
+        
 
         $this->middleware('auth');
     }

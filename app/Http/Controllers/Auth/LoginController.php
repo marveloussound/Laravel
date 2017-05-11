@@ -41,8 +41,9 @@ namespace App\Http\Controllers\Auth {
             //   LoginModel::getInstance();
 //            $loginModel = ViewModel\Auth\LoginModel::getInstance();
 //            $a = $loginModel->Name;
-            phpinfo();
             $this->test("aa", "a");
+
+            phpinfo();
 
             $this->middleware('guest', ['except' => 'logout']);
         }
